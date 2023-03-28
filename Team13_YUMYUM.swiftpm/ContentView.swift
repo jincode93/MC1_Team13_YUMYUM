@@ -155,6 +155,51 @@ struct ContentView: View {
                             .padding(.horizontal, 20)
                             .padding(.vertical, 20)
                             
+                            VStack {
+                                Rectangle()
+                                    .fill(.gray)
+                                    .frame(height: 20)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("변호사상담")
+                                        
+                                        Divider()
+                                        
+                                        Text("연애상담")
+                                    }
+                                    
+                                    Divider()
+                                    
+                                    HStack {
+                                        Text("매일 타로 상담")
+                                        
+                                        Divider()
+                                        
+                                        Text("MBTI 검사")
+                                    }
+                                    
+                                    // MARK: - 배너이미지로 수정할 것
+                                    Rectangle()
+                                        .fill(.blue)
+                                        .frame(height: 120)
+                                }
+                                
+                                Rectangle()
+                                    .fill(.gray)
+                                    .frame(height: 20)
+                            }
+                            
+                            VStack {
+                                HStack {
+                                    Text("많이 본 Q&A")
+                                    
+                                    Spacer()
+                                    
+                                    Text("28일 21시 기준")
+                                }
+                            }
+                            
                             Spacer()
                         }
                     }
@@ -248,3 +293,4 @@ struct ChoiceCard: View {
         .shadow(radius: 10, x: 10, y: 10)
     }
 }
+
