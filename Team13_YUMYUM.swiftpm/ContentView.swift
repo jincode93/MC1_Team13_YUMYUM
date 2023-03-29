@@ -23,6 +23,11 @@ struct ContentView: View {
                                 .padding(.bottom, 30)
 
                             GameView()
+                                .padding(.bottom, 10)
+                            
+                            ContributorScrollView()
+                            
+                            
                             
                             
                             
