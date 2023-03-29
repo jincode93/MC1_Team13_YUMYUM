@@ -1,14 +1,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isCardFlip1: Bool = false
-    @State private var cardOpacity1: Double = 1
-    @State private var backOpacity1: Double = 0
-    
-    @State private var isCardFlip2: Bool = false
-    @State private var cardOpacity2: Double = 1
-    @State private var backOpacity2: Double = 0
-    
+    @State private var isCardFlip: [Bool] = [false, false, false, false, false, false]
+    @State private var cardOpacity: [Double] = [1, 1, 1, 1, 1, 1]
+    @State private var backOpacity: [Double] = [0, 0, 0, 0, 0, 0]
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -18,18 +14,19 @@ struct ContentView: View {
                 //                .ignoresSafeArea()
                 
                 ZStack {
-                    Rectangle()
-                        .ignoresSafeArea()
-                        .foregroundColor(.black)
-                        .opacity(isCardFlip1 || isCardFlip2 ? 0.5 : 0)
-                        .zIndex(1)
-                    
                     VStack {
                         Rectangle()
                             .fill(Color("BackGroundGray"))
                             .frame(height: 1)
                         
                         ScrollView(.vertical, showsIndicators: false) {
+                            
+                            Rectangle()
+                                .ignoresSafeArea()
+                                .foregroundColor(.black)
+                                .opacity(isCardFlip.contains(true) ? 0.5 : 0)
+                                .zIndex(2)
+                            
                             VStack(alignment: .leading) {
                                 Image("MainTitle")
                                     .resizable()
@@ -53,30 +50,30 @@ struct ContentView: View {
                                     .scaledToFit()
                                     .frame(width: 350)
                                     .offset(y: -850)
-                                    .opacity(backOpacity1)
-                                    .animation(.linear(duration: 0.4), value: backOpacity1)
+                                    .opacity(backOpacity[0])
+                                    .animation(.linear(duration: 0.4), value: backOpacity[0])
                                     .onTapGesture {
-                                        isCardFlip1.toggle()
-                                        cardOpacity1 = 1
-                                        backOpacity1 = 0
+                                        isCardFlip[0].toggle()
+                                        cardOpacity[0] = 1
+                                        backOpacity[0] = 0
                                     }
                                     .animation(.linear(duration: 0.4))
-                                    .zIndex(2)
+                                    .zIndex(1)
                                 
                                 Image("CardBack2")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 350)
                                     .offset(y: -850)
-                                    .opacity(backOpacity2)
-                                    .animation(.linear(duration: 0.4), value: backOpacity2)
+                                    .opacity(backOpacity[1])
+                                    .animation(.linear(duration: 0.4), value: backOpacity[1])
                                     .onTapGesture {
-                                        isCardFlip2.toggle()
-                                        cardOpacity2 = 1
-                                        backOpacity2 = 0
+                                        isCardFlip[1].toggle()
+                                        cardOpacity[1] = 1
+                                        backOpacity[1] = 0
                                     }
                                     .animation(.linear(duration: 0.4))
-                                    .zIndex(2)
+                                    .zIndex(1)
                                 
                                 VStack {
                                     ScrollView(.horizontal, showsIndicators: false) {
@@ -87,28 +84,84 @@ struct ContentView: View {
                                                 .frame(width: 200)
                                                 .padding(.leading, 20)
                                                 .onTapGesture {
-                                                    isCardFlip1.toggle()
-                                                    cardOpacity1 = 0
-                                                    backOpacity1 = 1
+                                                    isCardFlip[0].toggle()
+                                                    cardOpacity[0] = 0
+                                                    backOpacity[0] = 1
                                                 }
-                                                .rotation3DEffect(.degrees(isCardFlip1 ? 180 : 0), axis: (0.0,1.0,0.0))
+                                                .rotation3DEffect(.degrees(isCardFlip[0] ? 180 : 0), axis: (0.0,1.0,0.0))
                                                 .animation(.linear(duration: 0.4))
-                                                .opacity(cardOpacity1)
-                                                .animation(.linear(duration: 0.4), value: cardOpacity1)
+                                                .opacity(cardOpacity[0])
+                                                .animation(.linear(duration: 0.4), value: cardOpacity[0])
                                             
                                             Image("MemogiCard2")
                                                 .resizable()
                                                 .scaledToFit()
                                                 .frame(width: 200)
                                                 .onTapGesture {
-                                                    isCardFlip2.toggle()
-                                                    cardOpacity2 = 0
-                                                    backOpacity2 = 1
+                                                    isCardFlip[1].toggle()
+                                                    cardOpacity[1] = 0
+                                                    backOpacity[1] = 1
                                                 }
-                                                .rotation3DEffect(.degrees(isCardFlip2 ? 180 : 0), axis: (0.0,1.0,0.0))
+                                                .rotation3DEffect(.degrees(isCardFlip[1] ? 180 : 0), axis: (0.0,1.0,0.0))
                                                 .animation(.linear(duration: 0.4))
-                                                .opacity(cardOpacity2)
-                                                .animation(.linear(duration: 0.4), value: cardOpacity2)
+                                                .opacity(cardOpacity[1])
+                                                .animation(.linear(duration: 0.4), value: cardOpacity[1])
+                                            
+                                            Image("MemogiCard3")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 200)
+                                                .onTapGesture {
+                                                    isCardFlip[2].toggle()
+                                                    cardOpacity[2] = 0
+                                                    backOpacity[2] = 1
+                                                }
+                                                .rotation3DEffect(.degrees(isCardFlip[2] ? 180 : 0), axis: (0.0,1.0,0.0))
+                                                .animation(.linear(duration: 0.4))
+                                                .opacity(cardOpacity[2])
+                                                .animation(.linear(duration: 0.4), value: cardOpacity[2])
+                                            
+                                            Image("MemogiCard4")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 200)
+                                                .onTapGesture {
+                                                    isCardFlip[3].toggle()
+                                                    cardOpacity[3] = 0
+                                                    backOpacity[3] = 1
+                                                }
+                                                .rotation3DEffect(.degrees(isCardFlip[3] ? 180 : 0), axis: (0.0,1.0,0.0))
+                                                .animation(.linear(duration: 0.4))
+                                                .opacity(cardOpacity[3])
+                                                .animation(.linear(duration: 0.4), value: cardOpacity[3])
+                                            
+                                            Image("MemogiCard5")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 200)
+                                                .onTapGesture {
+                                                    isCardFlip[4].toggle()
+                                                    cardOpacity[4] = 0
+                                                    backOpacity[4] = 1
+                                                }
+                                                .rotation3DEffect(.degrees(isCardFlip[4] ? 180 : 0), axis: (0.0,1.0,0.0))
+                                                .animation(.linear(duration: 0.4))
+                                                .opacity(cardOpacity[4])
+                                                .animation(.linear(duration: 0.4), value: cardOpacity[4])
+                                            
+                                            Image("MemogiCard6")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 200)
+                                                .onTapGesture {
+                                                    isCardFlip[5].toggle()
+                                                    cardOpacity[5] = 0
+                                                    backOpacity[5] = 1
+                                                }
+                                                .rotation3DEffect(.degrees(isCardFlip[5] ? 180 : 0), axis: (0.0,1.0,0.0))
+                                                .animation(.linear(duration: 0.4))
+                                                .opacity(cardOpacity[5])
+                                                .animation(.linear(duration: 0.4), value: cardOpacity[5])
                                         }
                                     }
                                     
@@ -354,7 +407,7 @@ struct ContentView: View {
                                             
                                             Spacer()
                                         }
-                                    }
+                                    } // ZStack
                                     
                                     BannerView()
                                         .padding(.bottom, 30)
@@ -406,12 +459,12 @@ struct ContentView: View {
                                     }
                                     .font(.caption)
                                     .foregroundColor(.DarkGray)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+                                } // VStack
+                            } // ZStack
+                        } // ScrollView
+                    } // VStack
+                } // ZStack
+            } // ZStack
+        } // NavigationView
+    } // body
+} // struct
