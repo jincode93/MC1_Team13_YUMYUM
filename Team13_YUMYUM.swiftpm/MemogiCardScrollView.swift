@@ -8,48 +8,73 @@
 import SwiftUI
 
 struct MemojiCardScrollView: View {
+    @State private var isFaceUp = true
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                MemojiCard(title: "백엔드 엑스퍼트 (허클베리)", detail: "JSON 상하차가 필요할 땐", cardColor: "LightOrange")
-                    .padding(.leading, 20)
+                CardView(isFaceUp: isFaceUp, imageName: "Cake3", axis: (0,1,0))
+                    .animation(.linear(duration: 1.0))
+                    .frame(width:200)
+                    .onTapGesture {
+                        isFaceUp.toggle()
+                    }
                 
-                MemojiCard(title: "iFarm 성지 (옐슨)", detail: "얼음 구하기", cardColor: "LightPurple")
+                Image("MemogiCard2")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
                 
-                MemojiCard(title: "오늘의 질문 (제롬)", detail: "좋아하는 코테 언어는?", cardColor: "LightBlue")
+                Image("MemogiCard3")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
                 
-                MemojiCard(title: "아하! 그렇구나 (코비)", detail: "김코비씨는 김씨인가요?", cardColor: "LightGreen")
+                Image("MemogiCard4")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
                 
-                MemojiCard(title: "저메 CHUICE (완)", detail: "자취요리 (야메요리 외전 aka 요린이", cardColor: "LightYellow")
+                Image("MemogiCard5")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                
+                Image("MemogiCard6")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
             }
+            .padding(.leading, 20)
             .padding(.bottom, 15)
         }
     }
 }
 
-struct MemojiCard: View {
-    var title: String
-    var detail: String
-    var cardColor: String
+struct CardView: View {
+    var isFaceUp: Bool
+    var imageName = "BackCard1"
+    var axis:(CGFloat,CGFloat,CGFloat) = (1.0,0.0,0.0)
     
-    var body: some View { 
+    var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Color(cardColor))
+            Image("MemogiCard1")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200)
             
-            VStack(alignment: .leading) {
-                Text(title)
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.white)
-                    .padding(.bottom)
-                
-                Text(detail)
-                    .foregroundColor(.white)
+            if isFaceUp {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .clipped()
+                    .cornerRadius(15.0)
+                    .padding(10)
             }
-            .padding(.horizontal)
         }
-        .frame(width: 200, height: 240)
-        //.shadow(radius: 10, x: 10, y: 10)
+        .rotation3DEffect(
+            Angle.degrees(isFaceUp ? 0: 180),
+            axis: axis
+        )
     }
 }
