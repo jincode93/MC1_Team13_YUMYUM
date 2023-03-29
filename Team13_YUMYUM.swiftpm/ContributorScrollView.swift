@@ -23,10 +23,10 @@ struct ContributorScrollView: View {
                     
                     HStack { // HStack
                         
-                        ForEach(0..<4) { row in
+                        ForEach(0..<contributorList.count) { row in
                             ContributorView(contributor: contributorList[row])
                                 .frame(width: 160, height: 199)
-                            if row != 3 {
+                            if row != contributorList.count - 1 {
                                 Divider()
                                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 0))
                             }
