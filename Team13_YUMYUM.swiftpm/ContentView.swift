@@ -1,164 +1,172 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isCardFlip1: Bool = false
+    @State private var cardOpacity1: Double = 1
+    @State private var backOpacity1: Double = 0
+    
+    @State private var isCardFlip2: Bool = false
+    @State private var cardOpacity2: Double = 1
+    @State private var backOpacity2: Double = 0
+    
     var body: some View {
         ZStack {
             Color("BackGroundGray")
                 .ignoresSafeArea()
+//            Image("BackGround")
+//                .ignoresSafeArea()
             
-            VStack {
-                MainTitle()
+            ZStack {
+                Rectangle()
+                    .ignoresSafeArea()
+                    .foregroundColor(.black)
+                    .opacity(isCardFlip1 || isCardFlip2 ? 0.5 : 0)
+                    .zIndex(1)
                 
-                ScrollView {
-                    VStack {
-                        VStack {
-                            MemojiCardScrollView()
-                                .padding(.bottom, 10)
+                VStack {
+                    Rectangle()
+                        .fill(Color("BackGroundGray"))
+                        .frame(height: 1)
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(alignment: .leading) {
+                            Image("MainTitle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 204)
+                                .padding(.vertical, 20)
                             
-                            QAView()
+                            
+                            Text("우리 각자에 대한 이야기")
+                                .bold()
+                                .foregroundColor(Color("DarkGray"))
+                            
+                            Divider()
+                                .padding(.vertical, 10)
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        ZStack {
+                            Image("CardBack1")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 350)
+                                .offset(y: -250)
+                                .opacity(backOpacity1)
+                                .animation(.linear(duration: 0.4), value: backOpacity1)
+                                .onTapGesture {
+                                    isCardFlip1.toggle()
+                                    cardOpacity1 = 1
+                                    backOpacity1 = 0
+                                }
+                                .animation(.linear(duration: 0.4))
+                                .zIndex(2)
+                            
+                            Image("CardBack2")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 350)
+                                .offset(y: -250)
+                                .opacity(backOpacity2)
+                                .animation(.linear(duration: 0.4), value: backOpacity2)
+                                .onTapGesture {
+                                    isCardFlip2.toggle()
+                                    cardOpacity2 = 1
+                                    backOpacity2 = 0
+                                }
+                                .animation(.linear(duration: 0.4))
+                                .zIndex(2)
                             
                             VStack {
-                                HStack {
-                                    Text("인기 초이스")
-                                    
-                                    Spacer()
-                                    
-                                    Text("더보기")
-                                        .font(.caption)
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack {
+                                        Image("MemogiCard1")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 200)
+                                            .padding(.leading, 20)
+                                            .onTapGesture {
+                                                isCardFlip1.toggle()
+                                                cardOpacity1 = 0
+                                                backOpacity1 = 1
+                                            }
+                                            .rotation3DEffect(.degrees(isCardFlip1 ? 180 : 0), axis: (0.0,1.0,0.0))
+                                            .animation(.linear(duration: 0.4))
+                                            .opacity(cardOpacity1)
+                                            .animation(.linear(duration: 0.4), value: cardOpacity1)
+                                        
+                                        Image("MemogiCard2")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 200)
+                                            .onTapGesture {
+                                                isCardFlip2.toggle()
+                                                cardOpacity2 = 0
+                                                backOpacity2 = 1
+                                            }
+                                            .rotation3DEffect(.degrees(isCardFlip2 ? 180 : 0), axis: (0.0,1.0,0.0))
+                                            .animation(.linear(duration: 0.4))
+                                            .opacity(cardOpacity2)
+                                            .animation(.linear(duration: 0.4), value: cardOpacity2)
+                                    }
                                 }
                                 
-                                TabView {
-                                    ChoiceCard(title: "링고에게 링고링고링하고 도망가기 VS 지쿠에게 장갑사진 줄까말까하다가 도망가기")
-                                    
-                                    ChoiceCard(title: "데이지보다 하이톤으로 인사하기 VS 섭보다 저음으로 인사하기")
-                                    
-                                    ChoiceCard(title: "밤샘 회식 후 오전 세션 참여하기 VS 금요일 밤 회식 없이 그냥 집가기")
-                                }
-                                .frame(height: 530)
-                                .tabViewStyle(PageTabViewStyle())
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 20)
-                            
-                            VStack {
-                                Rectangle()
-                                    .fill(.gray)
-                                    .frame(height: 10)
+                                QAView()
+                                    .zIndex(2)
+                                
+                                BannerView()
+                                    .padding(.bottom, 30)
+                                
+                                GameView()
+                                    .padding(.bottom, 10)
+                                
+                                // MARK: - 삭제예정
+    //                            ContributorScrollView()
+    //                                .padding(.bottom, 10)
+                                
+                                TodayInfoView()
+                                    .padding(.bottom, 50)
                                 
                                 VStack {
-                                    HStack {
-                                        
-                                        Spacer()
-                                        
-                                        Text("변호사상담")
-                                            .padding(.vertical, 10)
-                                        
-                                        Spacer()
-                                        
-                                        Divider()
-                                        
-                                        Spacer()
-                                        
-                                        Text("연애상담")
-                                            .padding(.vertical, 10)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    Divider()
-                                    
-                                    HStack {
-                                        
-                                        Spacer()
-                                        
-                                        Text("매일 타로 상담")
-                                            .padding(.vertical, 10)
-                                        
-                                        Spacer()
-                                        
-                                        Divider()
-                                        
-                                        Spacer()
-                                        
-                                        Text("MBTI 검사")
-                                            .padding(.vertical, 10)
-                                        
-                                        Spacer()
+                                    ZStack {
+                                        Rectangle()
+                                            .fill(Color.white)
+                                            .frame(width: 250, height: 41)
+                                            .shadow(radius: 1, x: 0, y: 1)
+                                        HStack{
+                                            Rectangle()
+                                                .frame(width: 24, height: 24)
+                                                .cornerRadius(12)
+                                                .foregroundColor(.DarkGray)
+                                            Text("YUMYUM 팀 성장에")
+                                            Text("#MC1")
+                                                .foregroundColor(.MainOrange)
+                                            Text("추가")
+                                        }
+                                        .font(.caption)
                                     }
                                 }
+                                .padding(.bottom, 30)
                                 
-                                // MARK: - 배너이미지로 수정할 것
-                                Rectangle()
-                                    .fill(.blue)
-                                    .frame(height: 120)
-                                
-                                Rectangle()
-                                    .fill(.gray)
-                                    .frame(height: 10)
-                            }
-                            
-                            VStack {
-                                HStack(alignment: .bottom) {
-                                    Text("많이 본 Q&A")
-                                        .font(.title2)
-                                    
-                                    Spacer()
-                                    
-                                    Text("28일 21시 기준")
-                                        .foregroundColor(.gray)
-                                }
-                                .padding(.top, 10)
-                                .padding(.horizontal, 10)
-                                
-                                Divider()
-                                
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        Text("1")
-                                            .font(.title2)
-                                            .foregroundColor(.green)
-                                        
-                                        Text("제가 성인 ADHD 환자인데요")
-                                    }
-                                    .padding(.bottom, 3)
-                                    
-                                    HStack(alignment: .top) {
-                                        Text("ㄴ")
-                                        
-                                        Text("제가 어떤 여배우를 좋아해서 집중이 안되도 약을먹고 부작용을 감수하면서 그 배우의 모든 작품을 거의 다...")
-                                    }
-                                    .foregroundColor(.gray)
-                                    
-                                    HStack {
-                                        Text("조회수 176")
-                                            .foregroundColor(.blue)
-                                        
-                                        Divider()
-                                        
-                                        Text("답변수 2")
-                                            .foregroundColor(.gray)
-                                    }
-                                }
-                                
-                                Divider()
                                 
                                 HStack {
-                                    Text("더보기")
-                                    
-                                    Image(systemName: "chevron.down")
+                                    Image("UpperArrow")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 16, height: 15)
+                                    Text("맨위로")
                                 }
-                                .foregroundColor(.gray)
-                                .padding(.vertical, 10)
+                                .padding(.bottom, 30)
                                 
-                                Rectangle()
-                                    .fill(.gray)
-                                    .frame(height: 10)
+                                VStack{
+                                    Text("@YUMYUM / 13Team")
+                                    Text("얌얌팀의 페이지에 오신 여러분을 환영합니다.")
+                                }
+                                .font(.caption)
+                                .foregroundColor(.DarkGray)
                             }
-                            
-                            Spacer()
                         }
                     }
-                    
                 }
             }
         }
