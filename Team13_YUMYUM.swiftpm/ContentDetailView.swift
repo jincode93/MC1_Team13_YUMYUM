@@ -165,7 +165,7 @@ struct ContentDetailView: View {
                                 Spacer()
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(Color.white)
-                                    .frame(width: .infinity, height: 100)
+                                    .frame(height: 100)
                                     .shadow(color: .gray, radius: 2, x: 0, y: 1)
                                 // TODO: shadow -> lightGray
                                 Spacer()
@@ -295,3 +295,4 @@ struct ContentDetailView_Previews: PreviewProvider {
         ContentDetailView(questionModel: DetailViewQuestionModel.list[0], answerModel: DetailViewAnswerModel.list[0])
     }
 }
+

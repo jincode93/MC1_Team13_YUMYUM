@@ -32,20 +32,27 @@ struct QAView: View {
                 .cornerRadius(30, corners: .topRight)
                 .frame(height: 810)
             
-            VStack {
-                Text("분야별 전문 상담")
-                    .font(.callout)
+            VStack(alignment: .leading) {
+                Text("우리가 관심 있는 것들")
+                    .bold()
                     .foregroundColor(Color("DarkGray"))
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical, 20)
+                    .padding(.top, 60)
+                    .padding(.bottom, 10)
+                    .padding(.leading, 20)
+                
+                Divider()
+                    .padding(.bottom, 10)
+                    .padding(.horizontal, 20)
                 
                 HStack {
 
                     Spacer()
                     
                     VStack(alignment: .center) {
-                        Rectangle()
-                            .frame(width: 52, height: 52)
+                        Image("icon1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 52)
                         
                         Text("베이킹")
                             .font(.callout)
@@ -55,10 +62,12 @@ struct QAView: View {
                     Spacer()
                     
                     VStack(alignment: .center) {
-                        Rectangle()
-                            .frame(width: 52, height: 52)
+                        Image("icon2")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 42)
                         
-                        Text("베이킹")
+                        Text("Github")
                             .font(.callout)
                             .foregroundColor(Color("DarkGray"))
                     }
@@ -66,10 +75,12 @@ struct QAView: View {
                     Spacer()
                     
                     VStack(alignment: .center) {
-                        Rectangle()
-                            .frame(width: 52, height: 52)
+                        Image("icon3")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 52)
                         
-                        Text("베이킹")
+                        Text("탁구")
                             .font(.callout)
                             .foregroundColor(Color("DarkGray"))
                     }
@@ -77,10 +88,12 @@ struct QAView: View {
                     Spacer()
                     
                     VStack(alignment: .center) {
-                        Rectangle()
-                            .frame(width: 52, height: 52)
+                        Image("icon4")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30)
                         
-                        Text("베이킹")
+                        Text("클라이밍")
                             .font(.callout)
                             .foregroundColor(Color("DarkGray"))
                     }
@@ -88,13 +101,11 @@ struct QAView: View {
                     Spacer()
                 }
                 .padding(.bottom, 10)
-                
-                Divider()
                     
                 VStack(alignment: .leading) {
                     
                     Text("많이 본 Q&A")
-                        .font(.callout)
+                        .bold()
                         .foregroundColor(Color("DarkGray"))
                         .padding(.top, 20)
                         .padding(.leading, 20)
