@@ -2,23 +2,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Rectangle()
-                .fill(Color.white)
-                .frame(height: 1)
+        ZStack {
+            Color("BackGroundGray")
+                .ignoresSafeArea()
             
-            ScrollView {
-                VStack {
-                    MainTitle()
-                    
-                    LazyVStack(pinnedViews: [.sectionHeaders]) {
-                        Section(header: Header()) {
-                            
+            VStack {
+                MainTitle()
+                
+                ScrollView {
+                    VStack {
+                        VStack {
                             MemojiCardScrollView()
+                                .padding(.bottom, 10)
                             
-                            NomalAndChoiceQuestion()
-                            
-                            AIconsulting()
+                            QAView()
                             
                             VStack {
                                 HStack {
@@ -161,6 +158,7 @@ struct ContentView: View {
                             Spacer()
                         }
                     }
+                    
                 }
             }
         }

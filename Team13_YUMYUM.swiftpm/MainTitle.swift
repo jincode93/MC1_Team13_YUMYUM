@@ -17,18 +17,20 @@ struct MainTitle: View {
             
             Text("지식iN")
                 .font(.title)
-                .bold()
+                .padding(.leading, 5)
             
             Divider()
                 .frame(height: 20)
             
-            Text("learner")
-                .font(.title)
+            Image("Learner")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 20)
             
             Spacer()
         }
         .padding(.top, 5)
         .padding(.bottom)
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 20)
     }
 }
