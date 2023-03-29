@@ -23,8 +23,9 @@ struct ContentView: View {
                             GameView()
                                 .padding(.bottom, 10)
                             
-                            ContributorScrollView()
-                                .padding(.bottom, 10)
+                            // MARK: - 삭제예정
+//                            ContributorScrollView()
+//                                .padding(.bottom, 10)
                             
                             TodayInfoView()
                                 .padding(.bottom, 50)
