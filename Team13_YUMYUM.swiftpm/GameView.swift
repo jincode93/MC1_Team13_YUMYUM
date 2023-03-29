@@ -23,8 +23,7 @@ struct GameView: View {
                 .padding(EdgeInsets(top: 45, leading: 20, bottom: 0, trailing: 20))
                 
                 Divider()
-                    .padding(.trailing, 20)
-                    .padding(.vertical, 15)
+                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 20))
                 
                 VStack(alignment: .center) {
                     Button {
