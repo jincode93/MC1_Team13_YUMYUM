@@ -20,6 +20,9 @@ struct ContentView: View {
                             //  MARK: 여기부터 작업 ---
                             
                             BannerView()
+                                .padding(.bottom, 30)
+
+                            GameView()
                             
                             
                             
