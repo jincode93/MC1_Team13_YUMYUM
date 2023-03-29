@@ -17,6 +17,13 @@ struct ContentView: View {
                             
                             QAView()
                             
+                            //  MARK: 여기부터 작업 ---
+                            
+                            BannerView()
+                            
+                            
+                            
+                            // MARK: ---
                             VStack {
                                 HStack {
                                     Text("인기 초이스")
