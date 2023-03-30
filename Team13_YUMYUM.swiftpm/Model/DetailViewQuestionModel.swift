@@ -10,23 +10,19 @@ import Foundation
 struct DetailViewQuestionModel: Hashable, Identifiable {
     var id: UUID = UUID()
     
-    let title: String
-    let score: Int
-    let userName: String
-    let adoptionRate: Int
-    let closingRate: Int
     let description: String
     let hashTagList: [String]
-    let date: String
-    let views: Int
-    let curious: Int
-    let comments: Int
+
     
 }
 
 
+
 extension DetailViewQuestionModel {
     static let list: [DetailViewQuestionModel] = [
-        DetailViewQuestionModel(title: "제가 처음으로 팀플하게 됐는데 팀에 자아가 센 사람만 있는거 합법인가요???", score: 50, userName: "이름", adoptionRate: 100, closingRate: 100, description: "ㄹㅇ이해가 안가서 그럼;;;", hashTagList: ["해시태그1", "해시태그2", "해시태그3", "해시태그4"], date: "2023.03.25.", views: 1234, curious: 10, comments: 5),
+
+        DetailViewQuestionModel(description: "제가 처음으로 팀플을 하게\n됐는데 팀에 의견 강한 사람만\n있는거 합법인가요???", hashTagList: ["자아비대", "6인6색", "파국"]),
+        DetailViewQuestionModel(description: "프젝이 산으로 가는 것 같은데\n이런 경우에는 어떻게 해야할\n까요? ㅜㅜ", hashTagList: ["자아비대", "6인6색", "파국"]),
+        DetailViewQuestionModel(description: "정말 좋은 솔루션을 도출했는데,\n결과물이 되기까지 어떻게\n푸쉬할 수 있을까요?", hashTagList: ["자아비대", "6인6색", "파국"])
     ]
 }
