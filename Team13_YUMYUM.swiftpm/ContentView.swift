@@ -10,8 +10,96 @@ struct ContentView: View {
             ZStack {
                 Color("BackGroundGray")
                     .ignoresSafeArea()
-                //            Image("BackGround")
-                //                .ignoresSafeArea()
+                
+                Rectangle()
+                    .ignoresSafeArea()
+                    .foregroundColor(.black)
+                    .opacity(isCardFlip.contains(true) ? 0.5 : 0)
+                    .zIndex(2)
+                
+                Image("CardBack1")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 350)
+                    .opacity(backOpacity[0])
+                    .animation(.linear(duration: 0.4), value: backOpacity[0])
+                    .onTapGesture {
+                        isCardFlip[0].toggle()
+                        cardOpacity[0] = 1
+                        backOpacity[0] = 0
+                    }
+                    .animation(.linear(duration: 0.4))
+                    .zIndex(3)
+                
+                Image("CardBack2")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 350)
+                    .opacity(backOpacity[1])
+                    .animation(.linear(duration: 0.4), value: backOpacity[1])
+                    .onTapGesture {
+                        isCardFlip[1].toggle()
+                        cardOpacity[1] = 1
+                        backOpacity[1] = 0
+                    }
+                    .animation(.linear(duration: 0.4))
+                    .zIndex(3)
+                
+                Image("CardBack3")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 350)
+                    .opacity(backOpacity[2])
+                    .animation(.linear(duration: 0.4), value: backOpacity[2])
+                    .onTapGesture {
+                        isCardFlip[2].toggle()
+                        cardOpacity[2] = 1
+                        backOpacity[2] = 0
+                    }
+                    .animation(.linear(duration: 0.4))
+                    .zIndex(3)
+                
+                Image("CardBack4")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 350)
+                    .opacity(backOpacity[3])
+                    .animation(.linear(duration: 0.4), value: backOpacity[3])
+                    .onTapGesture {
+                        isCardFlip[3].toggle()
+                        cardOpacity[3] = 1
+                        backOpacity[3] = 0
+                    }
+                    .animation(.linear(duration: 0.4))
+                    .zIndex(3)
+                
+                Image("CardBack5")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 350)
+                    .opacity(backOpacity[4])
+                    .animation(.linear(duration: 0.4), value: backOpacity[4])
+                    .onTapGesture {
+                        isCardFlip[4].toggle()
+                        cardOpacity[4] = 1
+                        backOpacity[4] = 0
+                    }
+                    .animation(.linear(duration: 0.4))
+                    .zIndex(3)
+                
+                Image("CardBack6")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 350)
+                    .opacity(backOpacity[5])
+                    .animation(.linear(duration: 0.4), value: backOpacity[5])
+                    .onTapGesture {
+                        isCardFlip[5].toggle()
+                        cardOpacity[5] = 1
+                        backOpacity[5] = 0
+                    }
+                    .animation(.linear(duration: 0.4))
+                    .zIndex(3)
                 
                 ZStack {
                     VStack {
@@ -20,19 +108,12 @@ struct ContentView: View {
                             .frame(height: 1)
                         
                         ScrollView(.vertical, showsIndicators: false) {
-                            
-                            Rectangle()
-                                .ignoresSafeArea()
-                                .foregroundColor(.black)
-                                .opacity(isCardFlip.contains(true) ? 0.5 : 0)
-                                .zIndex(2)
-                            
                             VStack(alignment: .leading) {
                                 Image("MainTitle")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 204)
-                                    .padding(.vertical, 20)
+                                    .padding(.bottom, 20)
                                 
                                 
                                 Text("우리 각자에 대한 이야기")
@@ -45,36 +126,6 @@ struct ContentView: View {
                             .padding(.horizontal, 20)
                             
                             ZStack {
-                                Image("CardBack1")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 350)
-                                    .offset(y: -850)
-                                    .opacity(backOpacity[0])
-                                    .animation(.linear(duration: 0.4), value: backOpacity[0])
-                                    .onTapGesture {
-                                        isCardFlip[0].toggle()
-                                        cardOpacity[0] = 1
-                                        backOpacity[0] = 0
-                                    }
-                                    .animation(.linear(duration: 0.4))
-                                    .zIndex(1)
-                                
-                                Image("CardBack2")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 350)
-                                    .offset(y: -850)
-                                    .opacity(backOpacity[1])
-                                    .animation(.linear(duration: 0.4), value: backOpacity[1])
-                                    .onTapGesture {
-                                        isCardFlip[1].toggle()
-                                        cardOpacity[1] = 1
-                                        backOpacity[1] = 0
-                                    }
-                                    .animation(.linear(duration: 0.4))
-                                    .zIndex(1)
-                                
                                 VStack {
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack {
@@ -164,6 +215,7 @@ struct ContentView: View {
                                                 .animation(.linear(duration: 0.4), value: cardOpacity[5])
                                         }
                                     }
+                                    .padding(.bottom, 20)
                                     
                                     ZStack {
                                         Rectangle()
@@ -412,8 +464,36 @@ struct ContentView: View {
                                     BannerView()
                                         .padding(.bottom, 30)
                                     
-                                    GameView()
-                                        .padding(.bottom, 10)
+                                    
+                                    ZStack(alignment: .top) {
+                                        Rectangle()
+                                            .fill(.white)
+                                            .cornerRadius(30, corners: .topLeft)
+                                            .cornerRadius(30, corners: .topRight)
+                                            .frame(height: 583)
+                                        VStack(alignment: .center) {
+                                            HStack() {
+                                                Text("프로젝트 에피타이저: 팀빌팅 프레임워크")
+                                                Spacer()
+                                            }
+                                            .padding(EdgeInsets(top: 45, leading: 20, bottom: 0, trailing: 20))
+                                            
+                                            Divider()
+                                                .padding(EdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 20))
+                                            
+                                            NavigationLink {
+                                                CardGameView()
+                                            } label: {
+                                                Image("GameCard")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 327)
+                                            }
+                                        }
+                                    }
+                                    
+//                                    GameView()
+//                                        .padding(.bottom, 10)
                                     
                                     // MARK: - 삭제예정
                                     //                            ContributorScrollView()
