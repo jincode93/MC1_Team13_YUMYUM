@@ -111,39 +111,6 @@ struct QAView: View {
                             .padding(.top, 20)
                             .padding(.leading, 20)
                         
-//                        NavigationLink {
-//                            ContentDetailView(questionModel: DetailViewQuestionModel.list[0], answerModel: DetailViewAnswerModel.list[0])
-//                        } label: {
-//                            VStack(alignment: .leading) {
-//                                Divider()
-//                                    .padding(.trailing, 20)
-//                                    .padding(.vertical, 10)
-//
-//                                HStack {
-//                                    Text("1")
-//                                        .foregroundColor(Color("MainOrange"))
-//
-//                                    Text("제가 처음으로 팀플하게 됐는데 팀에 의견 강한...")
-//                                        .padding(.leading, 10)
-//                                }
-//                                .padding(.bottom, 3)
-//
-//                                HStack(alignment: .top) {
-//                                    Image("BrokenLine")
-//                                        .resizable()
-//                                        .scaledToFit()
-//                                        .frame(width: 13)
-//
-//                                    Text("아... 그럴 수 있죠 ㅎ 자기주장이 강한 분들만 모였나보네요.ㅋ 저희가 바로 그런 경우였습니다...")
-//                                        .font(.callout)
-//                                        .padding(.top, 3)
-//                                }
-//                                .foregroundColor(.gray)
-//                                .padding(.leading, 3)
-//                            }
-//                            .padding(.horizontal, 20)
-//                        }
-                        
                         VStack(alignment: .leading) {
                             Divider()
                                 .padding(.trailing, 20)

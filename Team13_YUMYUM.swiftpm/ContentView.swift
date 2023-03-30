@@ -222,7 +222,7 @@ struct ContentView: View {
                                             .fill(.white)
                                             .cornerRadius(30, corners: .topLeft)
                                             .cornerRadius(30, corners: .topRight)
-                                            .frame(height: 780)
+                                            .frame(height: 660)
                                         
                                         VStack(alignment: .leading) {
                                             Text("우리가 관심 있는 것들")
@@ -337,7 +337,7 @@ struct ContentView: View {
                                                 }
                                                 
                                                 NavigationLink {
-                                                    ContentDetailView(questionModel: DetailViewQuestionModel.list[0], answerModel: DetailViewAnswerModel.list[0])
+                                                    ContentDetailView(questionModel: DetailViewQuestionModel.list[1], answerModel: DetailViewAnswerModel.list[1])
                                                 } label: {
                                                     VStack(alignment: .leading) {
                                                         Divider()
@@ -371,7 +371,7 @@ struct ContentView: View {
                                                 }
                                                 
                                                 NavigationLink {
-                                                    ContentDetailView(questionModel: DetailViewQuestionModel.list[0], answerModel: DetailViewAnswerModel.list[0])
+                                                    ContentDetailView(questionModel: DetailViewQuestionModel.list[2], answerModel: DetailViewAnswerModel.list[2])
                                                 } label: {
                                                     VStack(alignment: .leading) {
                                                         Divider()
@@ -395,40 +395,6 @@ struct ContentView: View {
                                                                 .frame(width: 13)
                                                             
                                                             Text("우여곡절을 겪으셨던 것 같은데 솔루션을 도출하셨군\n요! 우선 그 어려운 일을 해내셨다는 것을 진심으로...")
-                                                                .font(.callout)
-                                                                .padding(.top, 3)
-                                                        }
-                                                        .foregroundColor(.gray)
-                                                        .padding(.leading, 3)
-                                                    }
-                                                    .padding(.horizontal, 20)
-                                                }
-                                                
-                                                NavigationLink {
-                                                    ContentDetailView(questionModel: DetailViewQuestionModel.list[0], answerModel: DetailViewAnswerModel.list[0])
-                                                } label: {
-                                                    VStack(alignment: .leading) {
-                                                        Divider()
-                                                            .padding(.trailing, 20)
-                                                            .padding(.vertical, 10)
-                                                        
-                                                        HStack {
-                                                            Text("4")
-                                                                .foregroundColor(Color("MainOrange"))
-                                                            
-                                                            Text("(스압주의) 프젝을 완주하긴 했는데 고민상담좀...")
-                                                                .padding(.leading, 10)
-                                                                .foregroundColor(.black)
-                                                        }
-                                                        .padding(.bottom, 3)
-                                                        
-                                                        HStack(alignment: .top) {
-                                                            Image("BrokenLine")
-                                                                .resizable()
-                                                                .scaledToFit()
-                                                                .frame(width: 13)
-                                                            
-                                                            Text("정말 많은 일이 있으셨군요. 그래도 공통적으로 느낀점은 엄청나게 많은 피드백을 주고 받으신 것...")
                                                                 .font(.callout)
                                                                 .padding(.top, 3)
                                                         }
@@ -473,7 +439,9 @@ struct ContentView: View {
                                             .frame(height: 583)
                                         VStack(alignment: .center) {
                                             HStack() {
-                                                Text("프로젝트 에피타이저: 팀빌팅 프레임워크")
+                                                Text("고민되는 팀원들과의 첫 만남, 맛있고 간단하게")
+                                                    .bold()
+                                                    .foregroundColor(Color("DarkGray"))
                                                 Spacer()
                                             }
                                             .padding(EdgeInsets(top: 45, leading: 20, bottom: 0, trailing: 20))
@@ -481,13 +449,26 @@ struct ContentView: View {
                                             Divider()
                                                 .padding(EdgeInsets(top: 10, leading: 20, bottom: 30, trailing: 20))
                                             
-                                            NavigationLink {
-                                                CardGameView()
-                                            } label: {
+                                            ZStack {
                                                 Image("GameCard")
                                                     .resizable()
                                                     .scaledToFit()
-                                                    .frame(width: 327)
+                                                    .frame(width: 400)
+                                                
+                                                NavigationLink {
+                                                    CardGameView()
+                                                } label: {
+                                                    ZStack {
+                                                        Capsule()
+                                                            .fill(Color.white)
+                                                            .frame(width: 219, height: 46)
+                                                        
+                                                        Text("Let's do it")
+                                                            .bold()
+                                                            .foregroundColor(Color.DarkGray)
+                                                    }
+                                                }
+                                                .offset(y: 175)
                                             }
                                         }
                                     }
